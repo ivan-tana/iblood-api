@@ -9,6 +9,9 @@ Clone the repositorty to a folder
 
     git clone https://github.com/ivan-tana/iblood-api.git
 
+
+then
+    cd iblood-api
 create a virtual enviroment in your terminal
 
     virtualenv venv And activate it with 
