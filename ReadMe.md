@@ -35,7 +35,9 @@ example:
 
 If the account is created successfully the response will contain an auth token generated using the username and password and a 200 status code 
 
-{ message: user account was created successfuly token: auth_token }
+    { 
+       "token": "token string"
+    }
 
 If the user account alrady exist this will result in  responce with a 404 status code and a message indicating the user accounts already exists
 

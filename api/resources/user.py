@@ -63,10 +63,10 @@ class Create_User(Resource):
 
 
         if create_user(email, hash_password):
-            return encode({
+            return{ "token": encode({
                 'email':email,
                 'password': password
-            })
+            })}
 
         return  {'message': 'could not create user'}, 404
 
@@ -125,8 +125,8 @@ class Login(Resource):
 
         user = User.query.filter_by(email = email).first()
         if user and check_password_hash(user.password, password):
-            return encode({
+            return { "token":  encode({
                 'email': email,
                 'password': password}
-            )
+            )}
         return {'message': 'invalid login details'}, 400
