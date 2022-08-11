@@ -18,3 +18,59 @@ There are two way you can run the app
 y"
 
 # How the api works
+## Creating a user account
+Creating a new user a count is done in two steps first the user auth and then the user profile 
+User auth
+The user profile is created by posting a json object to /user/signup 
+The json object most contain the following infomations
+* email
+* password 
+
+If the account is created successfully the response will contain an auth token generated using the username and password and a 200 status code 
+	{
+		message: user account was created successfuly 
+token: auth_token 
+}
+
+If the user account alrady exist this will result in  responce with a 404 status code and a message indicating the user accounts already exists
+	{
+		message : user account already exists
+}
+
+After the user account is created an auth token is generated using the user email and password and sent back as a responce in the HTTP basic auth header 
+
+The auth token should be used for any request by the account it was generated fro, each token expires ofter 3 days 
+
+With the user account created the auth token received can be us to identify the user on the server 
+User profile
+The user profile is created by posting a json token with the auth token in the HTTP header to user/profile
+
+The user profile token should contain the following 
+* first_name
+* last_name
+* birthday
+* blood_type
+* profile_image
+
+## Blood request 
+After the admin has verified and approved the account then the user can create and fullfile blood requests 
+
+
+Blood requets 
+	A blood request can be created by posting a json object to request/create
+The json object should contain the following  
+* requested_blood_type
+* due _date 
+If the creation of the request is successfull the server will send a json object responce containing a message that the request was created successfully  and a 200 status code
+{ 
+message: request created
+}
+
+If the request could not be create the server sends a responce with a 404 status code 
+{
+message: could not create request 
+}
+
+Fullfill a request
+All request created are given an id which can be user to access them 
+A user  
