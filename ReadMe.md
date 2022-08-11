@@ -11,27 +11,24 @@ Clone the repositorty to a folder
 And activate it with 
 for linux
 
-   ''' Source venv/bin/activate'''
-
+    Source venv/bin/activate
+    
 for windows
 
-    '''venv/scripts/activate'''
+    venv/scripts/activate
 
 * run "pip install -r requirements.txt" to install all the libaries and dependacies used in the project
+    pip install -r requirements.txt
 
-    '''pip install -r requirements.txt '''
 * run "export FLASK_APP=api" to tell flask where the app is located"
-
-   ''' export FLASK_APP=api'''
+    export FLASK_APP=api
 
 * run "flask create_tables" to create all the database tables 
-
-    '''flask create_tables'''
+    flask create_tables
 
 ## If all the above went withdout a problem, then it's time to run the api
 There are two way you can run the app
 * if you have run the export FLASK_APP command then you can simply run "flask run" to run the api 
-    
     flask run" to run the api
 
 * you can also run the app by using the command "python3 run.py" to run the run.py file, if you are using linux you may need to run "python3 run.py"
