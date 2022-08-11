@@ -27,15 +27,12 @@ The json object most contain the following infomations
 * password 
 
 If the account is created successfully the response will contain an auth token generated using the username and password and a 200 status code 
-	{
-		message: user account was created successfuly 
-token: auth_token 
-}
+
+{ message: user account was created successfuly token: auth_token }
 
 If the user account alrady exist this will result in  responce with a 404 status code and a message indicating the user accounts already exists
-	{
-		message : user account already exists
-}
+
+{ message : user account already exists }
 
 After the user account is created an auth token is generated using the user email and password and sent back as a responce in the HTTP basic auth header 
 
@@ -57,10 +54,14 @@ After the admin has verified and approved the account then the user can create a
 
 
 Blood requets 
+
 	A blood request can be created by posting a json object to request/create
+    
 The json object should contain the following  
+
 * requested_blood_type
 * due _date 
+
 If the creation of the request is successfull the server will send a json object responce containing a message that the request was created successfully  and a 200 status code
 { 
 message: request created
