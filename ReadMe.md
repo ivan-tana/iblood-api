@@ -7,8 +7,8 @@ The database is build using flask-sqlalchemy
 ## Getting started: configurations and intalls 
 Clone the repositorty to a folder
 * run the command below to create a virtual enviroment
-    virtualenv venv
-And activate it with 
+    virtualenv venv And activate it with 
+
 for linux
 
     Source venv/bin/activate
