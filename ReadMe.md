@@ -121,5 +121,13 @@ To view the user name send a post request to the user/profile link and you will 
 
 if the user profile has been deleted or not created you will get  a response with the fileds fro the user information left blank
 
+    {
+        "first_name": "",
+        "last_name": "",
+        "birthday": "",
+        "blood type": "",
+        "image url": ""
+    }
+
 ## Blood request 
 After the admin has verified and approved the account then the user can create and fullfile blood requests 
