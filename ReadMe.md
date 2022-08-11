@@ -26,6 +26,13 @@ The json object most contain the following infomations
 * email
 * password 
 
+example:
+
+    {
+        "email":"useremail",
+        "password": "userpassword"
+    }
+
 If the account is created successfully the response will contain an auth token generated using the username and password and a 200 status code 
 
 { message: user account was created successfuly token: auth_token }
@@ -55,8 +62,8 @@ After the admin has verified and approved the account then the user can create a
 
 Blood requets 
 
-	A blood request can be created by posting a json object to request/create
-    
+A blood request can be created by posting a json object to request/create
+
 The json object should contain the following  
 
 * requested_blood_type
