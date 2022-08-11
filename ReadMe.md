@@ -7,7 +7,7 @@ The database is build using flask-sqlalchemy
 ## Getting started: configurations and intalls 
 Clone the repositorty to a folder
 
-    git colon https://github.com/ivan-tana/iblood-api.git
+    git clone https://github.com/ivan-tana/iblood-api.git
 
 create a virtual enviroment in your terminal
 
