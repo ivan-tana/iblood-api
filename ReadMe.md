@@ -19,6 +19,8 @@ y"
 
 # How the api works
 ## Creating a user account
+
+### Note: The request send to the sever except for the login and create user route must all contain an access token in the header of the request
 Creating a new user a count is done in two steps first the user auth and then the user profile 
 User auth
 The user profile is created by posting a json object to /user/signup 
@@ -41,7 +43,9 @@ If the account is created successfully the response will contain an auth token g
 
 If the user account alrady exist this will result in  responce with a 404 status code and a message indicating the user accounts already exists
 
-{ message : user account already exists }
+    {
+        "message" :"could not create user"
+    }
 
 After the user account is created an auth token is generated using the user email and password and sent back as a responce in the HTTP basic auth header 
 
@@ -56,31 +60,40 @@ The user profile token should contain the following
 * last_name
 * birthday
 * blood_type
-* profile_image
+* image_url
+
+Example 
+
+    {
+        "first_name": "user first name",
+        "last_name": "user last name",
+        "birthday": "user birthday",
+        "blood type": "user blood type",
+        "image url": "user profile image link"
+    }
+
+the user profile can be updated by sending a post request to the user/profile with all the infomation field in and an edit to the field you want to edit
+
+Example editing the user name
+    {
+        "first_name": "user first name edited",
+        "last_name": "user last name",
+        "birthday": "user birthday",
+        "blood type": "user blood type",
+        "image url": "user profile image link"
+    }
+
+To view the user name send a post request to the user/profile link and you will get the user profile information
+
+    {
+        "first_name": "user first name",
+        "last_name": "user last name",
+        "birthday": "user birthday",
+        "blood type": "user blood type",
+        "image url": "user profile image link"
+    }
+
+if the user profile has been deleted or not created you will get  a response with the fileds fro the user information left blank
 
 ## Blood request 
 After the admin has verified and approved the account then the user can create and fullfile blood requests 
-
-
-Blood requets 
-
-A blood request can be created by posting a json object to request/create
-
-The json object should contain the following  
-
-* requested_blood_type
-* due _date 
-
-If the creation of the request is successfull the server will send a json object responce containing a message that the request was created successfully  and a 200 status code
-{ 
-message: request created
-}
-
-If the request could not be create the server sends a responce with a 404 status code 
-{
-message: could not create request 
-}
-
-Fullfill a request
-All request created are given an id which can be user to access them 
-A user  
