@@ -11,7 +11,7 @@ Clone the repositorty to a folder
 
 for linux
 
-    ource venv/bin/activate
+    source venv/bin/activate
     
 for windows
 
