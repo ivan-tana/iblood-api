@@ -30,9 +30,8 @@ There are two way you can run the app
 if you have run the export FLASK_APP command then you can simply run "flask run" to run the api 
     flask run" to run the api
 
-you can also run the app by using the command "python3 run.py" to run the run.py file, if you are using linux you may need to run "python3 run.py"
+you can also run the app by using the command "python run.py" to run the run.py file, if you are using linux you may need to run "python3 run.py"
     
-    python3 run.py
     python3 run.py
 
 # How the api works
