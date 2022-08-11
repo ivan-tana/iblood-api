@@ -8,7 +8,7 @@ The database is build using flask-sqlalchemy
 Clone the repositorty to a folder
 
     git colon https://github.com/ivan-tana/iblood-api.git
-    
+
 create a virtual enviroment in your terminal
 
     virtualenv venv And activate it with 
@@ -48,7 +48,7 @@ you can also run the app by using the command "python run.py" to run the run.py 
 ### Note: The request send to the sever except for the login and create user route must all contain an access token in the header of the request
 Creating a new user a count is done in two steps first the user auth and then the user profile 
 User auth
-The user profile is created by posting a json object to /user/signup 
+The user profile is created by posting a json object to ** /user/signup **
 The json object most contain the following infomations
 
 * email
@@ -79,7 +79,7 @@ The auth token should be used for any request by the account it was generated fr
 
 With the user account created the auth token received can be us to identify the user on the server 
 User profile
-The user profile is created by posting a json token with the auth token in the HTTP header to user/profile
+The user profile is created by posting a json token with the auth token in the HTTP header to ** user/profile **
 
 The user profile token should contain the following 
 * first_name
@@ -98,7 +98,7 @@ Example
         "image url": "user profile image link"
     }
 
-the user profile can be updated by sending a post request to the user/profile with all the infomation field in and an edit to the field you want to edit
+the user profile can be updated by sending a post request to the ** user/profile ** with all the infomation field in and an edit to the field you want to edit
 
 Example editing the user name
     {
