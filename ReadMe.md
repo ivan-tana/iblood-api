@@ -11,7 +11,9 @@ Clone the repositorty to a folder
 
 
 then
+
     cd iblood-api
+    
 create a virtual enviroment in your terminal
 
     virtualenv venv And activate it with 
