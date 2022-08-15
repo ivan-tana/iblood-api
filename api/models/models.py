@@ -7,6 +7,7 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable = False)
     is_confirm = db.Column(db.Boolean, default = False)
     is_active = db.Column(db.Boolean, default = False)
+    is_admin = db.Column(db.Boolean, default = False)
 
 class User_Profile(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -21,7 +22,9 @@ class User_Profile(db.Model):
 
 class Request(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    user_public_id = db.Column(db.Text, unique = True)
+    user_id = db.Column(db.Text, unique = True)
+    patient_name = db.Column(db.String(60), nullable=False )
+    blood_type = db.Column(db.String(60), nullable=False )
     due_date = db.Column(db.String(60), nullable=False )
     fullfilled = db.Column(db.Boolean, default = False)
 

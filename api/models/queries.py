@@ -1,5 +1,5 @@
 import profile
-from .models import User, User_Profile
+from .models import User, User_Profile, Request
 def get_user(user_id):
     user = User.query.filter_by(id = user_id)
 
@@ -24,3 +24,18 @@ def get_user_profile(user_id):
         }
 
     return data
+
+def get_all_request():
+    requests = Request.query.all()
+    results = []
+    for request in requests:
+        data = {
+            "id":request.id,
+            "patient_name": request.patient_name,
+            "blood_type": request.blood_type,
+            "due_date": request.due_date,
+            "fullfilled": request.fullfilled
+        }
+
+        results.append(data)
+    return results

@@ -1,4 +1,5 @@
-from .models import User, User_Profile
+from email import message
+from .models import User, User_Profile, Request
 from api.extensions import db
 from flask_restful import abort
 
@@ -71,5 +72,32 @@ def delete_profile(user_id):
 
 
     
-def create_request(user_id, due_date, blood_type):
-    pass
+def create_request(user_id, due_date, blood_type, patient_name):
+    new_request = Request(
+        user_id = user_id,
+        patient_name = patient_name,
+        blood_type = blood_type,
+        due_date = due_date
+    )
+
+    try: 
+        db.session.add(new_request)
+        db.session.commit()
+    except:
+        abort(400, message='could not create user ')
+    return True
+
+def delete_request(request_id):
+    request  = Request.query.filter_by(id = request_id).delete()
+    db.session.commit()
+    return True
+
+def fullfill_request(request_id, user_id):
+    request  = Request.query.filter_by(id = request_id).first()
+    if request.user_id == user_id:
+        abort(400, message='request cannot be fullfilled by the current user')
+    else:
+        Request.query.filter_by(id = request_id).update(fullfilled = True)
+        db.session.commit()
+        return True
+    return False
