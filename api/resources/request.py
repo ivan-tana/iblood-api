@@ -2,7 +2,7 @@ from flask_restful import reqparse, Resource
 from api.auth import token_required
 
 from api.models.manupulations import create_request, fullfill_request
-from api.models.queries import get_all_request
+from api.models.queries import get_all_request, get_request
 
 request_perser = reqparse.RequestParser()
 request_perser.add_argument('patient_name', required=True, help='Missing patient_name')
@@ -29,10 +29,16 @@ class Request(Resource):
 
 class Specific_Request(Resource):
     @token_required
-    def post(self, current_user, request_id):
+    def get(self, current_user, request_id):
+        return get_request(request_id)
+    @token_required
+    def put(self, current_user, request_id):
 
         if fullfill_request(request_id,current_user.id):
             return {
                 "message": "request fullfilled"
             }
         return {'message': 'could not fullfilled request'}
+    @token_required
+    def delete(self, current_user, request_id):
+        pass

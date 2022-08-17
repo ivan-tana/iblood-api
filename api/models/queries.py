@@ -1,9 +1,10 @@
+from os import abort
 import profile
 from .models import User, User_Profile, Request
 def get_user(user_id):
     user = User.query.filter_by(id = user_id)
 
-def get_user_profile(user_id):
+def get_user_profile(user_id: int):
     profile = User_Profile.query.filter_by(id = user_id).first()
 
     if not profile:
@@ -11,7 +12,7 @@ def get_user_profile(user_id):
             'first_name': '',
             'last_name': '',
             'birthday': '',
-            'blood type': '',
+            'blood_type': '',
             'image_url':  ''
         }
     else:
@@ -19,7 +20,7 @@ def get_user_profile(user_id):
             'first_name': profile.first_name,
             'last_name': profile.last_name,
             'birthday': profile.birthday,
-            'blood type': profile.blood_type,
+            'blood_type': profile.blood_type,
             'image_url':  profile.image_url
         }
 
@@ -40,3 +41,21 @@ def get_all_request():
 
         results.append(data)
     return results
+
+
+def get_request(id: int):
+    request = Request.query.filter_by(id=id).first()
+
+    if not request:
+        abort(400, message="request not found")
+
+    data = {
+        "id":request.id,
+        "patient_name": request.patient_name,
+        "blood_type": request.blood_type,
+        "due_date": request.due_date,
+        "fullfilled": request.fullfilled,
+        "user_id":request.user_id
+    }
+
+    return data

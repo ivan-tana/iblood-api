@@ -94,13 +94,15 @@ def delete_request(request_id):
 
 def fullfill_request(request_id, user_id):
     request  = Request.query.filter_by(id = request_id).first()
-    if request.user_id == user_id:
+    if int(request.user_id) == int(user_id):
+        print('users are the same')
         abort(400, message='request cannot be fullfilled by the current user')
         return False
     if request.fullfilled == True:
         abort(400, message ='request has already been fullfilled')
         return False
     else:
+        print(user_id, request.user_id)
         rq = Request.query.get(request_id)
         rq.fullfilled = True
         db.session.commit()
