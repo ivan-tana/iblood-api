@@ -84,7 +84,7 @@ def create_request(user_id, due_date, blood_type, patient_name):
         db.session.add(new_request)
         db.session.commit()
     except:
-        abort(400, message='could not create user ')
+        abort(400, message='could not create request ')
     return True
 
 def delete_request(request_id):
@@ -96,8 +96,13 @@ def fullfill_request(request_id, user_id):
     request  = Request.query.filter_by(id = request_id).first()
     if request.user_id == user_id:
         abort(400, message='request cannot be fullfilled by the current user')
+        return False
+    if request.fullfilled == True:
+        abort(400, message ='request has already been fullfilled')
+        return False
     else:
-        Request.query.filter_by(id = request_id).update(fullfilled = True)
+        rq = Request.query.get(request_id)
+        rq.fullfilled = True
         db.session.commit()
         return True
     return False

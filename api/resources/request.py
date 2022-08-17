@@ -33,7 +33,6 @@ class Specific_Request(Resource):
 
         if fullfill_request(request_id,current_user.id):
             return {
-                "current user": current_user.email,
-                "request id": request_id
+                "message": "request fullfilled"
             }
         return {'message': 'could not fullfilled request'}

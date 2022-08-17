@@ -22,7 +22,7 @@ class User_Profile(db.Model):
 
 class Request(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Text, unique = True)
+    user_id = db.Column(db.Text)
     patient_name = db.Column(db.String(60), nullable=False )
     blood_type = db.Column(db.String(60), nullable=False )
     due_date = db.Column(db.String(60), nullable=False )

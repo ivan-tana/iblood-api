@@ -34,7 +34,8 @@ def get_all_request():
             "patient_name": request.patient_name,
             "blood_type": request.blood_type,
             "due_date": request.due_date,
-            "fullfilled": request.fullfilled
+            "fullfilled": request.fullfilled,
+            "user_id":request.user_id
         }
 
         results.append(data)
