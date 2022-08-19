@@ -1,6 +1,7 @@
-from os import abort
+
 import profile
 from .models import User, User_Profile, Request
+from flask_restful import abort
 def get_user(user_id):
     user = User.query.filter_by(id = user_id)
 

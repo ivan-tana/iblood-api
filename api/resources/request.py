@@ -1,7 +1,7 @@
 from flask_restful import reqparse, Resource
 from api.auth import token_required
 
-from api.models.manupulations import create_request, fullfill_request
+from api.models.manupulations import create_request, fullfill_request, delete_request
 from api.models.queries import get_all_request, get_request
 
 request_perser = reqparse.RequestParser()
@@ -41,4 +41,6 @@ class Specific_Request(Resource):
         return {'message': 'could not fullfilled request'}
     @token_required
     def delete(self, current_user, request_id):
-        pass
+        if(delete_request(request_id, current_user.id)):
+            return {'message': 'request deleted'}
+        return {'message': 'request could not be deleted'}

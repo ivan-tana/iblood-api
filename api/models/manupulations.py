@@ -108,3 +108,21 @@ def fullfill_request(request_id, user_id):
         db.session.commit()
         return True
     return False
+
+
+def delete_request(id: int, user_id: int):
+
+    request = Request.query.filter_by(id=id).first()
+    if not request:
+        abort(400, message ="Request not found")
+        return False
+    if not int(request.user_id) == int(user_id):
+        abort(400, message='Cannot delete another user request')
+
+    try: 
+        Request.query.filter_by(id = id).delete()
+        db.session.commit()
+        return True
+    except:
+        abort(400, message='Could not delete request')
+        return False
